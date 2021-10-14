@@ -3,6 +3,7 @@
 # See LICENSE for details.
 
 from math import inf
+from time import sleep
 
 
 class Paginator:
@@ -88,6 +89,8 @@ class PaginationIterator:
         if self.method.__name__ in ("search_all_tweets",
                                     "search_recent_tweets"):
             self.kwargs["next_token"] = pagination_token
+            if self.method.__name__ == "search_all_tweets":
+                sleep(1.01)
         else:
             self.kwargs["pagination_token"] = pagination_token
 
